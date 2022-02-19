@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | upnext</title>
+    <link rel="stylesheet" href="../static/admin.css">
+</head>
+<body>
+    <div class="header">
+        upnext
+    </div>
+    <div class="clients-wrapper">
+        {% for client in clients %}
+            <div class="client-card">
+                <div class="client-email">
+                    {{ client.email }}
+                </div>
+                <div class="client-phone">
+                    {{ client.phone }}
+                </div>
+                <button>30 min warning</button>
+                <button>call up</button>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

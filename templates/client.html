@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/client.css">
+</head>
+<body>
+    <div class="header">
+        upnext
+    </div>
+
+    <form  method="POST" action="{{ url_for('client') }}">
+        <div class="prompt">Leave your information below</div>
+        <input type="text" class="email" placeholder="Your email..." name="email" />
+        <input type="text" class="phone" placeholder="Your phone number..." name="phone" />
+        <input class="submit" type="submit" value="Submit">
+    </form>
+
+    
+</body>
+</html>
