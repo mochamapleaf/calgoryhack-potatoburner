@@ -71,8 +71,8 @@ def admin():
         except:
             'error'
     else:
-        clients = Clients.query.order_by(desc(Clients.date))
-        return render_template('admin.html', clients=clients)
+        clients = Clients.query.order_by(Clients.date)
+        return render_template('admin.html', clients = clients)
     
 
 # error 404 handler
