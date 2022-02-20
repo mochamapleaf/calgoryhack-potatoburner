@@ -11,16 +11,16 @@ db = SQLAlchemy(app)
 
 # db model
 class Clients(db.Model):
-    id = db.Column(db.Integer, primary_key = True)
-    name = db.Column(db.String(200), nullable = False)
-    email = db.Column(db.String(200), nullable = False)
-    phone = db.Column(db.Integer(), nullable = False)
-    date = db.Column(db.DateTime, default = datetime.utcnow) 
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(200), nullable=False)
+    email = db.Column(db.String(200), nullable=False)
+    phone = db.Column(db.Integer(), nullable=False)
+    date = db.Column(db.DateTime, default=datetime.utcnow) 
     def __repr__(self):
         return '<Client %r>' % self.id
 
 # home page decorator
-@app.route('/', methods = ['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
         form_email = request.form.get('passcode')
@@ -29,13 +29,13 @@ def index():
     return render_template('index.html')
 
 # client form page decorator
-@app.route('/client', methods = ['GET', 'POST'])
+@app.route('/client', methods=['GET', 'POST'])
 def client():
     if request.method == 'POST':
         form_name = request.form.get('firstname') + " " + request.form.get('lastname')
         form_email = request.form.get('email')
         form_phone = request.form.get('phone')
-        new_client = Clients(name = form_name, email=form_email, phone=form_phone)
+        new_client = Clients(name=form_name, email=form_email, phone=form_phone)
 
 #        send_msg(form_phone, 'Thank you for signing up, you will be notified when it is time for your appointment')
        
@@ -43,7 +43,7 @@ def client():
             #print("name: {}, email: {}, phone: {}".format(form_name, form_email, form_phone))
             db.session.add(new_client)
             db.session.commit()
-            return render_template('client.html', success = '&#9989;')
+            return render_template('client.html', success='&#9989;')
         except:
             'Error Occured'
             return "db write error"
@@ -51,7 +51,7 @@ def client():
         return render_template('client.html')
 
 # admin
-@app.route('/admin', methods = ['GET', 'POST'])
+@app.route('/admin', methods=['GET', 'POST'])
 def admin():
     if request.method == 'POST':
         client_name = request.form.get('clientname')
@@ -61,13 +61,13 @@ def admin():
         send_msg(phone, 'Your appointment starts now.')
 
         try:
-            obj = Clients.query.filter_by(email = client_email).one()
+            obj = Clients.query.filter_by(email=client_email).one()
             db.session.delete(obj)
             db.session.commit()
 
             clients = Clients.query.order_by(desc(Clients.date))
 
-            return render_template('admin.html', clients = clients)
+            return render_template('admin.html', clients=clients)
         except:
             'error'
     else:
