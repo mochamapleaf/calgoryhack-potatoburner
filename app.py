@@ -71,7 +71,7 @@ def admin():
         except:
             'error'
     else:
-        clients = Clients.query.order_by(desc(Clients.date))
+        clients = Clients.query.order_by(Clients.date)
         return render_template('admin.html', clients = clients)
     
 
