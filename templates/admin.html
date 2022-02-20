@@ -47,10 +47,10 @@
         {% for client in clients %}
             <div class="client-card" align="center">
                 <div class="client-email">
-                    <b>{{ client.email }}</b>
+                    <b><p>Email:</p>{{ client.email }}</b>
                 </div>
                 <div class="client-phone">
-                    {{ client.phone }}
+                    <p>Phone number:</p>{{ client.phone }}
                 </div>
                 <button type="button" class="btn btn-warning">30 min time warning</button>
                 <button type="button" class="btn btn-success">Notify Ready</button>
