@@ -17,30 +17,36 @@ class Clients(db.Model):
     phone = db.Column(db.Integer(), nullable=False)
     date = db.Column(db.DateTime, default=datetime.utcnow) 
     def __repr__(self):
-        return '<Client %r' % self.id
+        return '<Client %r>' % self.id
 
 # home page decorator
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    if request.method == 'POST':
+        form_email = request.form.get('passcode')
+        clientInfo = Clients.query.filter_by(email=form_email).first()
+        return clientInfo.name
     return render_template('index.html')
 
 # client form page decorator
 @app.route('/client', methods=['GET', 'POST'])
 def client():
     if request.method == 'POST':
-        form_name = request.form.get('name')
+        form_name = request.form.get('firstname') + " " + request.form.get('lastname')
         form_email = request.form.get('email')
         form_phone = request.form.get('phone')
         new_client = Clients(name=form_name, email=form_email, phone=form_phone)
 
-        send_msg(form_phone, 'Thank you for signing up, you will be notified when it is time for your appoitnment')
+#        send_msg(form_phone, 'Thank you for signing up, you will be notified when it is time for your appointment')
        
         try:
+            #print("name: {}, email: {}, phone: {}".format(form_name, form_email, form_phone))
             db.session.add(new_client)
             db.session.commit()
             return render_template('client.html', success='&#9989;')
         except:
             'Error Occured'
+            return "db write error"
     else:
         return render_template('client.html')
 
