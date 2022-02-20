@@ -38,7 +38,7 @@ def client():
         try:
             db.session.add(new_client)
             db.session.commit()
-            return render_template('client.html', success = '&#9989;')
+            return render_template('client.html', success='&#9989;')
         except:
             'Error Occured'
     else:
