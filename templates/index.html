@@ -11,7 +11,9 @@
 <body>
 <div class="header">
     <nav class="navbar navbar-light bg-rgb(33,82,163)">
-        <a class="navbar-brand logo"> <h1 class="logo"> UpNext </h1> </a>
+        <a class="navbar-brand logo"> <h1 class="logo"> UpNext 
+            <img src='https://i.postimg.cc/RCX4yMDM/logo-Up-Next-F.png' width="55" height="50" style="text-align:left" alt='logo-Up-Next-F'/>
+        </h1> </a>
     </nav>
 </div>
 
@@ -27,12 +29,11 @@
         <div class="container">
             <div class="center">
                 <a class="a" href="{{ url_for('client') }}" class="submit"> <button>  Proceed </button> </a>
+                <br><br>
+                <a class="admin-btn" href="{{ url_for('admin') }}"><button type="button" class="btn btn-outline-primary">Admin login</button></a>
             </div>
         </div>
     </form>
-</div>
-<div class="center">
-    <a class="admin-btn" href="{{ url_for('admin') }}"><button type="button" class="btn btn-outline-primary">Admin login</button></a>
 </div>
 </body>
 </html>
