@@ -25,7 +25,13 @@ def index():
     if request.method == 'POST':
         form_email = request.form.get('passcode')
         clientInfo = Clients.query.filter_by(email=form_email).first()
-        return clientInfo.name
+        queue = Clients.query.order_by(Clients.date)
+        num = 0
+        for i in queue:
+            if i.email == clientInfo.email:
+                break
+            num += 1
+        return "Hello {}, there are {} people in front of you".format(clientInfo.name, num)
     return render_template('index.html')
 
 # client form page decorator
@@ -65,7 +71,7 @@ def admin():
             db.session.delete(obj)
             db.session.commit()
 
-            clients = Clients.query.order_by(desc(Clients.date))
+            clients = Clients.query.order_by(Clients.date)
 
             return render_template('admin.html', clients=clients)
         except:
