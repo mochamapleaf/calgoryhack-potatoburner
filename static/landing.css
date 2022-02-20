@@ -1,0 +1,26 @@
+/* admin page styling here */
+*{ margin: 100; padding: 100;
+    box-sizing: border-box;}
+
+    .header {width: 100%;
+    background-color: rgb(33,82,163);
+    color: black;
+    }
+
+    h1 {
+        color: aliceblue;
+    }
+
+    h2 {
+        color: aliceblue
+    }
+
+.title {
+    padding-top: 20px;
+    font: 20px;
+}
+
+.client-card {
+    font: 20px;
+}
+
