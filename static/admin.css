@@ -14,3 +14,11 @@
     h2 {
         color: aliceblue
     }
+
+.logo {
+    padding-left: 20px;
+}
+
+.admin {
+    padding-right: 20px;
+}
