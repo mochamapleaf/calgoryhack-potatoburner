@@ -1,7 +1,7 @@
 /* index styling here */
 *{ margin: 100; padding: 100;
     box-sizing: border-box;}
-    
+
     .header {width: 100%;
     background-color: rgb(33,82,163);
     color: black;
@@ -10,7 +10,7 @@
     h1 {
         color: aliceblue;
     }
-    
+
     h2 {
         color: aliceblue
     }
@@ -29,7 +29,7 @@
         position: relative;
         border: none;
       }
-      
+
     .center {
         margin: 0;
         position: absolute;
@@ -57,3 +57,11 @@
         border: .5px solid;
         margin: 30px 0;
     }
+
+.admin-btn {
+    font-size: 10px;
+}
+
+.logo {
+    padding-left: 20px;
+}
