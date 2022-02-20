@@ -25,13 +25,15 @@ def index():
     if request.method == 'POST':
         form_email = request.form.get('passcode')
         clientInfo = Clients.query.filter_by(email=form_email).first()
+        if not clientInfo:
+            return redirect('/client')
         queue = Clients.query.order_by(Clients.date)
         num = 0
         for i in queue:
             if i.email == clientInfo.email:
                 break
             num += 1
-        return "Hello {}, there are {} people in front of you".format(clientInfo.name, num)
+        return render_template('landing.html',msg="Hello {}, there are {} people in front of you".format(clientInfo.name, num))
     return render_template('index.html')
 
 # client form page decorator
