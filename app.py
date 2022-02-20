@@ -15,17 +15,17 @@ class Clients(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     email =  db.Column(db.String(200), nullable = False)
     phone = db.Column(db.Integer(), nullable = False)
-    date = db.Column(db.DateTime, default = datetime.utcnow) 
+    date = db.Column(db.DateTime, default = datetime.utcnow)
     def __repr__(self):
         return '<Client %r' % self.id
 
 # client route decorator
-@app.route('/', methods = ['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def index():
     return render_template('index.html')
 
 
-@app.route('/client', methods = ['GET', 'POST'])
+@app.route('/client', methods=['GET', 'POST'])
 def client():
     if request.method == 'POST':
         form_email = request.form.get('email')
@@ -41,10 +41,10 @@ def client():
         return render_template('client.html')
 
 
-@app.route('/admin', methods = ['GET', 'POST'])
+@app.route('/admin', methods=['GET', 'POST'])
 def admin():
     clients = Clients.query.order_by(desc(Clients.date))
-    return render_template('admin.html', clients = clients)
+    return render_template('admin.html', clients=clients)
 
 # error 404 handler
 @app.errorhandler(404)
